@@ -29,6 +29,7 @@ public class Main {
         String apiKey = "YOUR_API_KEY";
 
         String url = "http://api.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + apiKey;
+
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         // optional default is GET
@@ -42,10 +43,13 @@ public class Main {
                 new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();
+
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
-        in.close();
+
+        con.disconnect();
+
         //print in String
         System.out.println(response.toString());
         //Read JSON response and print
