@@ -48,7 +48,7 @@ public class Main {
             response.append(inputLine);
         }
 
-        con.disconnect();
+        con.disconnect(); // connection disconnected
 
         //print in String
         System.out.println(response.toString());
@@ -64,9 +64,9 @@ public class Main {
         String copyData = "";
 
         for (int i = arr.length()-1; i >= 0; i--) {
-            double temp = Double.parseDouble(arr.getJSONObject(i).getJSONObject("main").get("temp").toString())- 272.15;
-            String dt_txt = arr.getJSONObject(i).getString("dt_txt");
-            String[] parts = dt_txt.split(" ");
+            double temp = Double.parseDouble(arr.getJSONObject(i).getJSONObject("main").get("temp").toString())- 272.15; // kelvin to celsius 1 kelvin = =272.15 degrees Celsius
+            String dt_txt = arr.getJSONObject(i).getString("dt_txt"); // YYYY-MM-DD HH-MM-SS
+            String[] parts = dt_txt.split(" "); // Splitting String where has space
 
             if (!parts[0].equals(copyData)) {
                 copyData = parts[0];
